@@ -1,0 +1,21 @@
+# LION PLUGIN
+# MADE BY MRLION
+
+msg: #Placeholders {sender}, {receiver} and {message}
+  outgoing-message-format: '&7[&b{sender} -> {receiver}&7] {message}'
+  incoming-message-format: '&7[&b{sender} -> you&7] {message}'
+
+fly:
+  no-permission-fly: "&cYou don't have permission for this!"
+  player-only: "&cOnly players can use this command!"
+
+reload:
+  no-permission-reload: "No perms to reload"
+  config-reloaded: "Reloaded"
+
+heal:
+  self-heal-message: "&aYou have been healed!"
+  other-heal-message: "&aYou have been healed by {healer}!"
+  all-heal-message: "&aAll players have been healed!"
+  player-not-found-message: "&cPlayer not found!"
+  console-usage-message: "&cUsage: /heal <player/all>"
