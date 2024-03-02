@@ -1,0 +1,5 @@
+name: LionPlugin
+version: '${project.version}'
+main: me.mrlion.lionplugin.LionPlugin
+api-version: '1.20'
+load: STARTUP
