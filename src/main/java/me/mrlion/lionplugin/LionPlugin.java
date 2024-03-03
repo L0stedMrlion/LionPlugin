@@ -7,9 +7,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public class LionPlugin extends JavaPlugin {
-
     private Set<UUID> vanishedPlayers;
-
     @Override
     public void onEnable() {
         vanishedPlayers = new HashSet<>();
@@ -22,7 +20,6 @@ public class LionPlugin extends JavaPlugin {
         getCommand("ping").setExecutor(new me.mrlion.lionplugin.commands.PingCommand(this));
         getCommand("vanish").setExecutor(new me.mrlion.lionplugin.commands.VanishCommand(this));
 
-        // Register event listeners
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.JoinQuitListener(this), this);
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.BlockedCommandsListener(this), this);
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.WhitelistListener(this), this);

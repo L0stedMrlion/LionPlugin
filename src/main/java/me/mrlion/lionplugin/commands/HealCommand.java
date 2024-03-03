@@ -52,7 +52,7 @@ public class HealCommand implements CommandExecutor {
             target.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal.other-heal-message").replace("{healer}", player.getName())));
             plugin.getLogger().info(target.getName() + " has been healed by " + player.getName());
         } else {
-            // If command is executed from console
+
             if (args.length == 0 || !args[0].equalsIgnoreCase("all")) {
                 sender.sendMessage(ChatColor.RED + plugin.getConfig().getString("heal.console-usage-message"));
                 return true;

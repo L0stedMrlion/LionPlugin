@@ -25,20 +25,17 @@ public class MsgCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        // Check if the correct number of arguments is provided
         if (args.length < 2) {
             player.sendMessage(ChatColor.RED + "Usage: /msg <player> <message>");
             return true;
         }
 
-        // Get the recipient player
         Player recipient = Bukkit.getPlayer(args[0]);
         if (recipient == null) {
             player.sendMessage(ChatColor.RED + "Player not found!");
             return true;
         }
 
-        // Concatenate the message
         StringBuilder message = new StringBuilder();
         for (int i = 1; i < args.length; i++) {
             message.append(args[i]).append(" ");

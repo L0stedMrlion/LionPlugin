@@ -8,13 +8,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class PingCommand implements CommandExecutor {
-
     private final LionPlugin plugin;
 
     public PingCommand(LionPlugin plugin) {
         this.plugin = plugin;
     }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Check if the sender is a player
@@ -22,7 +20,6 @@ public class PingCommand implements CommandExecutor {
             sender.sendMessage("Only players can use this command.");
             return true;
         }
-
         Player player = (Player) sender;
 
         String pingMessage = plugin.getConfig().getString("ping.ping-message");

@@ -40,7 +40,7 @@ public class WhitelistCommand implements CommandExecutor {
                 removalMessage = ChatColor.translateAlternateColorCodes('&', removalMessage.replace("{player}", playerName));
                 sender.sendMessage(removalMessage);
             }
-            plugin.getLogger().info(playerName + " was removed from the whitelist!");
+            plugin.getLogger().info(playerName + " was removed from the whitelist :(");
         } else {
             whitelist.add(playerName);
             plugin.getConfig().set("whitelisted-players", whitelist);
@@ -50,7 +50,7 @@ public class WhitelistCommand implements CommandExecutor {
                 additionMessage = ChatColor.translateAlternateColorCodes('&', additionMessage.replace("{player}", playerName));
                 sender.sendMessage(additionMessage);
             }
-            plugin.getLogger().info(playerName + " was added to the whitelist!");
+            plugin.getLogger().info(playerName + " was added to the whitelist :)");
         }
 
         return true;

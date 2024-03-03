@@ -1,3 +1,4 @@
+---
 #------- WHITELIST --------
 whitelist-enabled: true
 whitelisted-players:
@@ -6,6 +7,7 @@ whitelist-kick-message: "&cYou are not on the whitelist. Contact an admin for as
 
 # ------- JOIN & QUIT MESSAGES ---------
 
+# Can be used placeholders {player}
 join-message: "&6{player} &7has joined the server!"
 quit-message: "&6{player} &7has left the server :("
 
@@ -32,16 +34,16 @@ blocked-commands-no-perms: "&cYou don't have permission to execute this command!
 
 # ------- OTHER MESSAGES ---------
 
-msg: #Placeholders {sender}, {receiver} and {message}
-  outgoing-message-format: '&8[&6{sender} &8-> &6{receiver}&8] &7{message}'
-  incoming-message-format: '&8[&6{sender} &8-> &6You&8] &7{message}'
+msg: # Can be used placeholders {sender}, {receiver} and {message}
+  outgoing-message-format: "&6{sender} &8-> &6{receiver}&7: &7{message}"
+  incoming-message-format: "&6{sender} &8-> &6You&7: &7{message}"
 
 fly:
   no-permission-fly: "&cYou don't have permission for this!"
   player-only: "&cConsole cant use this command!"
 
 reload:
-  no-permission-reload: "&cYou don't have permission to reload the config."
+  no-permission-reload: "&cYou don't have permission to execute this command!"
   config-reloaded: "&aConfig successfully reloaded!"
 
 heal:
@@ -56,10 +58,8 @@ whitelist:
   player-removed: "&c{player} has been removed from the whitelist."
 
 ping:
-  ping-message: "&aYour ping is: &b{ping}ms"
+  ping-message: "&7Your ping is &6{ping}ms"
 
 vanish:
-  vanished-message: "&aYou have vanished from the server."
-  unvanished-message: "&cYou are now visible on the server."
-
-
+  vanished-message: "&aYou have vanished."
+  unvanished-message: "&cYou are now visible."
