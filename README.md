@@ -20,5 +20,4 @@
 
 ## 🧑‍💻 Things TODO:
 
-- Add colors to the config.yml messages (Now its just white)
-- Add more commands
+- For more things send me new idea!
