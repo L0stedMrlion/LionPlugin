@@ -18,7 +18,7 @@ public class WhitelistListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (plugin.getConfig().getBoolean("whitelist-enabled")) {
             String playerName = event.getPlayer().getName();
-            if (!plugin.getConfig().getStringList("whitelisted-players").contains(playerName)) {
+            if (!event.getPlayer().isOp() && !plugin.getConfig().getStringList("whitelisted-players").contains(playerName)) {
                 event.getPlayer().kickPlayer(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("whitelist-kick-message")));
             }
         }

@@ -25,17 +25,10 @@ public class SitListener implements Listener {
         Action action = event.getAction();
         Block clickedBlock = event.getClickedBlock();
 
-        // Check if the player has the lionplugin.sit permission
-        if (!player.hasPermission("lionplugin.sit")) {
-            return; // Exit the method if the player doesn't have permission
-        }
-
         if (action.equals(Action.RIGHT_CLICK_BLOCK) && clickedBlock != null) {
             Material blockType = clickedBlock.getType();
 
-            // Check if the block is a stair
             if (isStairs(blockType)) {
-                // Sit the player
                 sitPlayer(player, clickedBlock.getLocation());
             }
         }

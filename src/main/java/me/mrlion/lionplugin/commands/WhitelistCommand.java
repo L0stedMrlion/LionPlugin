@@ -18,8 +18,7 @@ public class WhitelistCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // Check if the sender has permission or is an operator
-        if (!sender.hasPermission("lionplugin.whitelist") && !sender.isOp()) {
+        if (!sender.hasPermission("lionplugin.whitelist")) {
             sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
             return true;
         }
