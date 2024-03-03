@@ -1,8 +1,7 @@
 name: LionPlugin
 author: Mrlion
-description: A utility plugin, made by Mrlion
-load: POSTWORLD
-version: "BUILD 168"
+description: "An utility plugin, made by Mrlion"
+version: "BUILD-203"
 main: me.mrlion.lionplugin.LionPlugin
 api-version: '1.20'
 resources:
@@ -17,6 +16,9 @@ commands:
   msg:
     description: Message a specific player
     usage: /msg <player> <message>
-  reload:
+  lreload:
     description: Reloads config.yml
     usage: /lreload
+  lwhitelist:
+    description: Add player to our own whitelist
+    usage: /lwhitelist <player>

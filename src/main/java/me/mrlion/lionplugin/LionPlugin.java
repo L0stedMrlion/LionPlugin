@@ -1,9 +1,7 @@
 package me.mrlion.lionplugin;
 
-import me.mrlion.lionplugin.commands.FlyCommand;
-import me.mrlion.lionplugin.commands.HealCommand;
-import me.mrlion.lionplugin.commands.MsgCommand;
-import me.mrlion.lionplugin.commands.ReloadCommand;
+import me.mrlion.lionplugin.commands.*;
+import me.mrlion.lionplugin.listeners.SitListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class LionPlugin extends JavaPlugin {
@@ -14,13 +12,20 @@ public class LionPlugin extends JavaPlugin {
         getCommand("heal").setExecutor(new HealCommand(this));
         getCommand("msg").setExecutor(new MsgCommand(this));
         getCommand("lreload").setExecutor(new ReloadCommand(this));
-        getLogger().info("\uD83E\uDD81 LionPlugin has been enabled!");
+        getCommand("lwhitelist").setExecutor(new WhitelistCommand(this));
+
+
+        getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.JoinQuitListener(this), this);
+        getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.BlockedCommandsListener(this), this);
+        getServer().getPluginManager().registerEvents(new SitListener(this), this);
+        getLogger().info("LionPlugin has been enabled!");
+
         saveDefaultConfig();
         reloadConfig();
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("🦁 LionPlugin has been disabled!");
+        getLogger().info("LionPlugin has been disabled!");
     }
 }
