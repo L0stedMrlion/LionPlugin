@@ -9,6 +9,14 @@
 - /fly (lionplugin.fly)
 - /lreload (lionplugin.reload)
 - /msg 
+- /lwhitelist (lionplugin.whitelist)
+  
+## 👷 Modules
+
+- Custom join and quit messages
+- Whitelist system + adding ingame
+- Sitting system on stairs
+- Blocked commands, can be set in the config
 
 ## 🧑‍💻 Things TODO:
 
