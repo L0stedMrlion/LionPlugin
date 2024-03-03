@@ -30,28 +30,28 @@ public class VanishCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
+
+        if (!player.hasPermission("lionplugin.vanish")) {
+            player.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
+            return true;
+        }
+
         String vanishedMessage = plugin.getConfig().getString("vanish.vanished-message");
         String unvanishedMessage = plugin.getConfig().getString("vanish.unvanished-message");
 
         if (vanishedPlayers.contains(player.getUniqueId())) {
-            // Unvanish the player
             vanishedPlayers.remove(player.getUniqueId());
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', unvanishedMessage));
-            // Remove potion effects
             player.removePotionEffect(PotionEffectType.NIGHT_VISION);
             player.removePotionEffect(PotionEffectType.SATURATION);
-            // Make player visible again
             for (Player onlinePlayer : plugin.getServer().getOnlinePlayers()) {
                 onlinePlayer.showPlayer(plugin, player);
             }
         } else {
-            // Vanish the player
             vanishedPlayers.add(player.getUniqueId());
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', vanishedMessage));
-            // Apply potion effects
             player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0, false, false));
             player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, Integer.MAX_VALUE, 0, false, false));
-            // Make player invisible to others
             for (Player onlinePlayer : plugin.getServer().getOnlinePlayers()) {
                 onlinePlayer.hidePlayer(plugin, player);
             }
