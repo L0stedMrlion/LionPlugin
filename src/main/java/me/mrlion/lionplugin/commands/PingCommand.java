@@ -25,7 +25,7 @@ public class PingCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        String pingMessage = plugin.getConfig().getString("ping-message");
+        String pingMessage = plugin.getConfig().getString("ping.ping-message");
 
         if (pingMessage == null || pingMessage.isEmpty()) {
             pingMessage = "&aYour ping is: &b" + getPing(player) + "ms";
