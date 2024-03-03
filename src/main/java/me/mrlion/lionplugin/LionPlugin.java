@@ -1,7 +1,5 @@
 package me.mrlion.lionplugin;
 
-import me.mrlion.lionplugin.commands.*;
-import me.mrlion.lionplugin.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class LionPlugin extends JavaPlugin {

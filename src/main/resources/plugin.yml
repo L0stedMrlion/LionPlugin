@@ -1,6 +1,6 @@
 name: LionPlugin
 author: Mrlion
-description: "An utility plugin, made by Mrlion"
+description: "An utility plugin, made by Mrlion for his servers"
 version: "BUILD-203"
 main: me.mrlion.lionplugin.LionPlugin
 api-version: '1.20'
