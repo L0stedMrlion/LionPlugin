@@ -11,6 +11,7 @@ public class LionPlugin extends JavaPlugin {
         getCommand("msg").setExecutor(new me.mrlion.lionplugin.commands.MsgCommand(this));
         getCommand("lreload").setExecutor(new me.mrlion.lionplugin.commands.ReloadCommand(this));
         getCommand("lwhitelist").setExecutor(new me.mrlion.lionplugin.commands.WhitelistCommand(this));
+        getCommand("ping").setExecutor(new me.mrlion.lionplugin.commands.PingCommand(this));
 
 
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.JoinQuitListener(this), this);

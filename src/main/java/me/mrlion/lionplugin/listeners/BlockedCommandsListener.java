@@ -25,9 +25,11 @@ public class BlockedCommandsListener implements Listener {
         List<String> blockedCommands = plugin.getConfig().getStringList("blocked-commands");
 
         if (blockedCommands.contains(commandName)) {
-            event.setCancelled(true);
-            String noPermsMessage = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("blocked-commands-no-perms"));
-            event.getPlayer().sendMessage(noPermsMessage);
+            if (!event.getPlayer().hasPermission("lionplugin.blockedcommands." + commandName)) {
+                event.setCancelled(true);
+                String noPermsMessage = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("blocked-commands-no-perms"));
+                event.getPlayer().sendMessage(noPermsMessage);
+            }
         }
     }
 }

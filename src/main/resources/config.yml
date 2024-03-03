@@ -55,4 +55,7 @@ whitelist:
   player-added: "&a{player} has been added to the whitelist."
   player-removed: "&c{player} has been removed from the whitelist."
 
+ping-message: "&aYour ping is: &b{ping}ms"
+
+
 
