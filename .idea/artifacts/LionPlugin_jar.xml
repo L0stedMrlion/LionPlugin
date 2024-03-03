@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="LionPlugin:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/LionPlugin_jar</output-path>
+    <root id="archive" name="LionPlugin.jar">
+      <element id="module-output" name="LionPlugin" />
+    </root>
+  </artifact>
+</component>
