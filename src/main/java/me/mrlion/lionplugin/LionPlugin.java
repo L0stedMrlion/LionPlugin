@@ -1,15 +1,19 @@
 package me.mrlion.lionplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import org.bstats.bukkit.Metrics;
 
 public class LionPlugin extends JavaPlugin {
     private Set<UUID> vanishedPlayers;
     @Override
     public void onEnable() {
+
+        int pluginId = 21197;
+        Metrics metrics = new Metrics(this, pluginId);
+
         vanishedPlayers = new HashSet<>();
 
         getCommand("fly").setExecutor(new me.mrlion.lionplugin.commands.FlyCommand(this));
