@@ -1,23 +1,24 @@
 package me.mrlion.lionplugin;
 
 import me.mrlion.lionplugin.commands.*;
-import me.mrlion.lionplugin.listeners.SitListener;
+import me.mrlion.lionplugin.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class LionPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getCommand("fly").setExecutor(new FlyCommand(this));
-        getCommand("heal").setExecutor(new HealCommand(this));
-        getCommand("msg").setExecutor(new MsgCommand(this));
-        getCommand("lreload").setExecutor(new ReloadCommand(this));
-        getCommand("lwhitelist").setExecutor(new WhitelistCommand(this));
+        getCommand("fly").setExecutor(new me.mrlion.lionplugin.commands.FlyCommand(this));
+        getCommand("heal").setExecutor(new me.mrlion.lionplugin.commands.HealCommand(this));
+        getCommand("msg").setExecutor(new me.mrlion.lionplugin.commands.MsgCommand(this));
+        getCommand("lreload").setExecutor(new me.mrlion.lionplugin.commands.ReloadCommand(this));
+        getCommand("lwhitelist").setExecutor(new me.mrlion.lionplugin.commands.WhitelistCommand(this));
 
 
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.JoinQuitListener(this), this);
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.BlockedCommandsListener(this), this);
-        getServer().getPluginManager().registerEvents(new SitListener(this), this);
+        getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.WhitelistListener(this), this);
+        getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.SitListener(this), this);
         getLogger().info("LionPlugin has been enabled!");
 
         saveDefaultConfig();
