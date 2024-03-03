@@ -10,6 +10,7 @@
 - /lreload (lionplugin.reload)
 - /msg 
 - /lwhitelist (lionplugin.whitelist)
+- /vanish (lionplugin.vanish)
   
 ## 👷 Modules
 
