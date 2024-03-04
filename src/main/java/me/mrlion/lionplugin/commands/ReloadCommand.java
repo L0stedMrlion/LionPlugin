@@ -6,6 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.ChatColor;
 
+import java.util.Objects;
+
 public class ReloadCommand implements CommandExecutor {
 
     private final LionPlugin plugin;
@@ -17,13 +19,13 @@ public class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("lionplugin.reload")) {
-            String noPermissionMessage = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("reload.no-permission-reload"));
+            String noPermissionMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("reload.no-permission-reload")));
             sender.sendMessage(noPermissionMessage);
             return true;
         }
 
         plugin.reloadConfig();
-        String configReloadedMessage = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("reload.config-reloaded"));
+        String configReloadedMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("reload.config-reloaded")));
         sender.sendMessage(configReloadedMessage);
         plugin.getLogger().info("Config was reloaded!");
         return true;

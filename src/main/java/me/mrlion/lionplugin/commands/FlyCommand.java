@@ -7,6 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import java.util.Objects;
+
 public class FlyCommand implements CommandExecutor {
 
     private final LionPlugin plugin;
@@ -18,13 +20,13 @@ public class FlyCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("fly.player-only")));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("fly.player-only"))));
             return true;
         }
 
         Player player = (Player) sender;
         if (!player.hasPermission("lionplugin.fly")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("fly.no-permission-fly")));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("fly.no-permission-fly"))));
             return true;
         }
 

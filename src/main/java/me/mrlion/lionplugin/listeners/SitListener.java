@@ -13,10 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class SitListener implements Listener {
 
-    private final LionPlugin plugin;
-
     public SitListener(LionPlugin plugin) {
-        this.plugin = plugin;
     }
 
     @EventHandler

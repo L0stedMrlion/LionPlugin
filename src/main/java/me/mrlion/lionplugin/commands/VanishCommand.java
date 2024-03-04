@@ -41,6 +41,7 @@ public class VanishCommand implements CommandExecutor {
 
         if (vanishedPlayers.contains(player.getUniqueId())) {
             vanishedPlayers.remove(player.getUniqueId());
+            assert unvanishedMessage != null;
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', unvanishedMessage));
             player.removePotionEffect(PotionEffectType.NIGHT_VISION);
             player.removePotionEffect(PotionEffectType.SATURATION);
@@ -49,6 +50,7 @@ public class VanishCommand implements CommandExecutor {
             }
         } else {
             vanishedPlayers.add(player.getUniqueId());
+            assert vanishedMessage != null;
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', vanishedMessage));
             player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0, false, false));
             player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, Integer.MAX_VALUE, 0, false, false));

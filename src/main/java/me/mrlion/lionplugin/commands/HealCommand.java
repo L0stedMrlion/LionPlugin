@@ -8,6 +8,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Objects;
+
 public class HealCommand implements CommandExecutor {
 
     private final LionPlugin plugin;
@@ -28,7 +30,7 @@ public class HealCommand implements CommandExecutor {
 
             if (args.length == 0) {
                 player.setHealth(20);
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal.self-heal-message")));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("heal.self-heal-message"))));
                 plugin.getLogger().info(player.getName() + " has been healed.");
                 return true;
             }
@@ -49,7 +51,7 @@ public class HealCommand implements CommandExecutor {
             }
 
             target.setHealth(20);
-            target.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal.other-heal-message").replace("{healer}", player.getName())));
+            target.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("heal.other-heal-message")).replace("{healer}", player.getName())));
             plugin.getLogger().info(target.getName() + " has been healed by " + player.getName());
         } else {
 
@@ -61,7 +63,7 @@ public class HealCommand implements CommandExecutor {
             if (args[0].equalsIgnoreCase("all")) {
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                     onlinePlayer.setHealth(20);
-                    onlinePlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal.other-heal-message").replace("{healer}", "Console")));
+                    onlinePlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("heal.other-heal-message")).replace("{healer}", "Console")));
                 }
                 plugin.getLogger().info("All players have been healed!");
                 return true;

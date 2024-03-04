@@ -7,6 +7,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.ChatColor;
 
 import java.util.List;
+import java.util.Objects;
 
 public class BlockedCommandsListener implements Listener {
 
@@ -27,7 +28,7 @@ public class BlockedCommandsListener implements Listener {
         if (blockedCommands.contains(commandName)) {
             if (!event.getPlayer().hasPermission("lionplugin.blockedcommands." + commandName)) {
                 event.setCancelled(true);
-                String noPermsMessage = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("blocked-commands-no-perms"));
+                String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("blocked-commands-no-perms")));
                 event.getPlayer().sendMessage(noPermsMessage);
             }
         }

@@ -8,6 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.ChatColor;
 
+import java.util.Objects;
+
 public class MsgCommand implements CommandExecutor {
 
     private final LionPlugin plugin;
@@ -41,13 +43,13 @@ public class MsgCommand implements CommandExecutor {
             message.append(args[i]).append(" ");
         }
 
-        String outgoingMessage = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("msg.outgoing-message-format")
+        String outgoingMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("msg.outgoing-message-format"))
                 .replace("{sender}", player.getName())
                 .replace("{receiver}", recipient.getName())
                 .replace("{message}", message.toString()));
         player.sendMessage(outgoingMessage);
 
-        String incomingMessage = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("msg.incoming-message-format")
+        String incomingMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("msg.incoming-message-format"))
                 .replace("{sender}", player.getName())
                 .replace("{receiver}", recipient.getName())
                 .replace("{message}", message.toString()));
