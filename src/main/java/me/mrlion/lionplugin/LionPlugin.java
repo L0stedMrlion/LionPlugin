@@ -25,7 +25,7 @@ public class LionPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.BlockedCommandsListener(this), this);
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.WhitelistListener(this), this);
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.SitListener(this), this);
-
+        getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.InvalidCommandListener(this), this);
         getLogger().info("LionPlugin has been enabled!");
 
         saveDefaultConfig();

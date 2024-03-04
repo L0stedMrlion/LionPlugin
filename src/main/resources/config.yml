@@ -64,3 +64,6 @@ ping:
 vanish:
   vanished-message: "&aYou have vanished."
   unvanished-message: "&cYou are now visible."
+
+invalidmessage:
+  custom-command-not-found-message: "&cThis command doesn't exist!"
