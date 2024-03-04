@@ -19,8 +19,12 @@ public class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("lionplugin.reload")) {
-            String noPermissionMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("reload.no-permission-reload")));
-            sender.sendMessage(noPermissionMessage);
+            String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("other.no-perms")));
+            if (noPermsMessage.isEmpty()) {
+                sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+            } else {
+                sender.sendMessage(noPermsMessage);
+            }
             return true;
         }
 

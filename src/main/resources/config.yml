@@ -1,4 +1,3 @@
----
 #------- WHITELIST --------
 whitelist-enabled: true
 whitelisted-players:
@@ -34,17 +33,17 @@ blocked-commands:
 blocked-commands-no-perms: "&cYou don't have permission to execute this command!"
 
 # ------- OTHER MESSAGES ---------
+other:
+  no-perms: "&cYou don't have permission to use this command!"
 
 msg: # Can be used placeholders {sender}, {receiver} and {message}
   outgoing-message-format: "&6{sender} &8-> &6{receiver}&7: &7{message}"
   incoming-message-format: "&6{sender} &8-> &6You&7: &7{message}"
 
 fly:
-  no-permission-fly: "&cYou don't have permission for this!"
   player-only: "&cConsole cant use this command!"
 
 reload:
-  no-permission-reload: "&cYou don't have permission to use this command!"
   config-reloaded: "&aConfig successfully reloaded!"
 
 heal:
@@ -55,6 +54,7 @@ heal:
   console-usage-message: "&cUsage: /heal <player/all>"
 
 whitelist:
+  cmd-usage: "&cUsage /lwhitelist <player>"
   player-added: "&a{player} has been added to the whitelist."
   player-removed: "&c{player} has been removed from the whitelist."
 
@@ -66,4 +66,4 @@ vanish:
   unvanished-message: "&cYou are now visible."
 
 invalidmessage:
-  custom-command-not-found-message: "&cThis command doesn't exist!"
+  custom-command-not-found-message: "&cThis command doesn't exist! Did you type it right?"

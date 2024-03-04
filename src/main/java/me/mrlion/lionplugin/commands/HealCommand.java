@@ -24,7 +24,12 @@ public class HealCommand implements CommandExecutor {
             Player player = (Player) sender;
 
             if (!player.hasPermission("lionplugin.heal")) {
-                player.sendMessage(ChatColor.RED + plugin.getConfig().getString("heal.no-permission-message"));
+                String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("other.no-perms")));
+                if (noPermsMessage.isEmpty()) {
+                    sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+                } else {
+                    sender.sendMessage(noPermsMessage);
+                }
                 return true;
             }
 

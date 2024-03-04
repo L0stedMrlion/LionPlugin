@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.ChatColor;
 
 import java.util.List;
+import java.util.Objects;
 
 public class WhitelistCommand implements CommandExecutor {
 
@@ -19,12 +20,22 @@ public class WhitelistCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("lionplugin.whitelist")) {
-            sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+            String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("other.no-perms")));
+            if (noPermsMessage.isEmpty()) {
+                sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+            } else {
+                sender.sendMessage(noPermsMessage);
+            }
             return true;
         }
 
         if (args.length != 1) {
-            sender.sendMessage(ChatColor.RED + "Usage: /lwhitelist <player>");
+            String usageWhitelist = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("whitelist.cmd-usage")));
+            if (usageWhitelist.isEmpty()) {
+                sender.sendMessage(ChatColor.RED + "Usage /lwhitelist <player>");
+            } else {
+                sender.sendMessage(usageWhitelist);
+            }
             return true;
         }
 
