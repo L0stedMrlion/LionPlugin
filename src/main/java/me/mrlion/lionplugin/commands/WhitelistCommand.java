@@ -29,39 +29,35 @@ public class WhitelistCommand implements CommandExecutor {
             return true;
         }
 
-        if (args.length != 1) {
+        boolean whitelistEnabled = plugin.getConfig().getBoolean("whitelist-enabled");
+
+        if (args.length != 1 || (!args[0].equalsIgnoreCase("on") && !args[0].equalsIgnoreCase("off"))) {
             String usageWhitelist = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("whitelist.cmd-usage")));
             if (usageWhitelist.isEmpty()) {
-                sender.sendMessage(ChatColor.RED + "Usage /lwhitelist <player>");
+                sender.sendMessage(ChatColor.RED + "Usage /lwhitelist <on/off>");
             } else {
                 sender.sendMessage(usageWhitelist);
             }
             return true;
         }
 
-        String playerName = args[0];
-        List<String> whitelist = plugin.getConfig().getStringList("whitelisted-players");
+        String mode = args[0].toLowerCase();
+        if ((mode.equals("on") && whitelistEnabled) || (mode.equals("off") && !whitelistEnabled)) {
+            sender.sendMessage(ChatColor.RED + "Whitelist is already " + (whitelistEnabled ? "enabled" : "disabled") + ".");
+            return true;
+        }
 
-        if (whitelist.contains(playerName)) {
-            whitelist.remove(playerName);
-            plugin.getConfig().set("whitelisted-players", whitelist);
+        if (mode.equals("on")) {
+            plugin.getConfig().set("whitelist-enabled", true);
             plugin.saveConfig();
-            String removalMessage = plugin.getConfig().getString("whitelist.removed-message");
-            if (removalMessage != null) {
-                removalMessage = ChatColor.translateAlternateColorCodes('&', removalMessage.replace("{player}", playerName));
-                sender.sendMessage(removalMessage);
-            }
-            plugin.getLogger().info(playerName + " was removed from the whitelist :(");
+            sender.sendMessage(ChatColor.GREEN + "Whitelist has been enabled.");
         } else {
-            whitelist.add(playerName);
+            List<String> whitelist = plugin.getConfig().getStringList("whitelisted-players");
+            whitelist.clear();
+            plugin.getConfig().set("whitelist-enabled", false);
             plugin.getConfig().set("whitelisted-players", whitelist);
             plugin.saveConfig();
-            String additionMessage = plugin.getConfig().getString("whitelist.added-message");
-            if (additionMessage != null) {
-                additionMessage = ChatColor.translateAlternateColorCodes('&', additionMessage.replace("{player}", playerName));
-                sender.sendMessage(additionMessage);
-            }
-            plugin.getLogger().info(playerName + " was added to the whitelist :)");
+            sender.sendMessage(ChatColor.RED + "Whitelist has been disabled.");
         }
 
         return true;
