@@ -17,13 +17,11 @@ public class LionPlugin extends JavaPlugin {
         Objects.requireNonNull(getCommand("heal")).setExecutor(new me.mrlion.lionplugin.commands.HealCommand(this));
         Objects.requireNonNull(getCommand("msg")).setExecutor(new me.mrlion.lionplugin.commands.MsgCommand(this));
         Objects.requireNonNull(getCommand("lreload")).setExecutor(new me.mrlion.lionplugin.commands.ReloadCommand(this));
-        Objects.requireNonNull(getCommand("lwhitelist")).setExecutor(new me.mrlion.lionplugin.commands.WhitelistCommand(this));
         Objects.requireNonNull(getCommand("ping")).setExecutor(new me.mrlion.lionplugin.commands.PingCommand(this));
         Objects.requireNonNull(getCommand("vanish")).setExecutor(new me.mrlion.lionplugin.commands.VanishCommand(this));
 
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.JoinQuitListener(this), this);
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.BlockedCommandsListener(this), this);
-        getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.WhitelistListener(this), this);
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.SitListener(this), this);
         getServer().getPluginManager().registerEvents(new me.mrlion.lionplugin.listeners.InvalidCommandListener(this), this);
 

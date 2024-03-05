@@ -1,16 +1,9 @@
 #------- WHITELIST --------
 whitelist-enabled: true
-on-message: "&aWhitelist has been enabled!"
-off-message: "&cWhitelist has been disabled!"
 whitelisted-players:
-  - L0stedMrlion
-whitelist-kick-message: |
-  - "#bf9508ʟɪᴏɴ's ᴘʀᴏᴊᴇᴄᴛ"
-  - "&f"
-  - "&7The Lion's project server is private, ask for whitelist on our Discord!"
-  - "#bf9508https://discord.gg/3kCwves4jH"
-  - "&f"
-
+  - Player1
+whitelist-kick-message: "&cʟɪᴏɴ's ᴘʀᴏᴊᴇᴄᴛ"
+whitelist-usage: "&cUsage /lwhitelist <remove/add> <player>"
 
 # ------- JOIN & QUIT MESSAGES ---------
 

@@ -21,7 +21,7 @@ commands:
     usage: /lreload
   lwhitelist:
     description: Add player to our whitelist system
-    usage: /lwhitelist <on/off/player>
+    usage: /lwhitelist <player>
   ping:
     description: Get your ping
     usage: /ping
