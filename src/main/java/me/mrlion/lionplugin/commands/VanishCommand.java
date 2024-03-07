@@ -33,9 +33,9 @@ public class VanishCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (!player.hasPermission("lionplugin.vanish")) {
-            String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("other.no-perms")));
+            String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("vanish.no-permissions")));
             if (noPermsMessage.isEmpty()) {
-                sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+                sender.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
             } else {
                 sender.sendMessage(noPermsMessage);
             }

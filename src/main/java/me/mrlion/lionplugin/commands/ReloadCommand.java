@@ -31,7 +31,7 @@ public class ReloadCommand implements CommandExecutor {
         plugin.reloadConfig();
         String configReloadedMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("reload.config-reloaded")));
         sender.sendMessage(configReloadedMessage);
-        plugin.getLogger().info("Config was reloaded!");
+        plugin.getLogger().info("Config was successfully reloaded");
         return true;
     }
 }

@@ -28,13 +28,15 @@ public class MsgCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length < 2) {
-            player.sendMessage(ChatColor.RED + "Usage: /msg <player> <message>");
+            String msgUsage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("msg.usage")));
+            player.sendMessage(msgUsage);
             return true;
         }
 
         Player recipient = Bukkit.getPlayer(args[0]);
         if (recipient == null) {
-            player.sendMessage(ChatColor.RED + "Player not found!");
+            String playerNotFound = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("msg.player-not-found")));
+            player.sendMessage(playerNotFound);
             return true;
         }
 

@@ -12,21 +12,16 @@ import java.util.Objects;
 
 public class InvalidCommandListener implements Listener {
 
-    private final LionPlugin plugin;
-
     public InvalidCommandListener(LionPlugin plugin) {
-        this.plugin = plugin;
     }
 
     @EventHandler
     public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
-        String commandName = event.getMessage().split(" ")[0].substring(1); // Get the command name
+        String commandName = event.getMessage().split(" ")[0].substring(1);
         Command command = event.getPlayer().getServer().getPluginCommand(commandName);
 
         if (command == null) {
             event.setCancelled(true);
-            String customMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("invalidmessage.custom-command-not-found-message")));
-            event.getPlayer().sendMessage(customMessage);
         }
     }
 }

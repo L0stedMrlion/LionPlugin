@@ -26,9 +26,9 @@ public class FlyCommand implements CommandExecutor {
 
         Player player = (Player) sender;
         if (!player.hasPermission("lionplugin.fly")) {
-            String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("other.no-perms")));
+            String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("fly.no-permissions")));
             if (noPermsMessage.isEmpty()) {
-                sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+                sender.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
             } else {
                 sender.sendMessage(noPermsMessage);
             }
