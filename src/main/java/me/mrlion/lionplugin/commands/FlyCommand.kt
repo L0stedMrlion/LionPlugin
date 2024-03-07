@@ -15,8 +15,7 @@ class FlyCommand(private val plugin: LionPlugin) : CommandExecutor {
             return true
         }
 
-        val player = sender
-        if (!player.hasPermission("lionplugin.fly")) {
+        if (!sender.hasPermission("lionplugin.fly")) {
             val noPermsMessage = Objects.requireNonNull(plugin.config.getString("fly.no-permissions"))?.let { ChatColor.translateAlternateColorCodes('&', it) }
             if (noPermsMessage != null) {
                 if (noPermsMessage.isEmpty()) {
@@ -28,12 +27,12 @@ class FlyCommand(private val plugin: LionPlugin) : CommandExecutor {
             return true
         }
 
-        if (player.allowFlight) {
-            player.allowFlight = false
-            plugin.logger.info(player.name + " has disabled flight mode.")
+        if (sender.allowFlight) {
+            sender.allowFlight = false
+            plugin.logger.info(sender.name + " has disabled flight mode.")
         } else {
-            player.allowFlight = true
-            plugin.logger.info(player.name + " has enabled flight mode.")
+            sender.allowFlight = true
+            plugin.logger.info(sender.name + " has enabled flight mode.")
         }
 
         return true

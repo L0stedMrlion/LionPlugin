@@ -17,11 +17,9 @@ class VanishCommand(private val plugin: LionPlugin) : CommandExecutor {
             return true
         }
 
-        val player = sender
-
-        if (!player.hasPermission("lionplugin.vanish")) {
+        if (!sender.hasPermission("lionplugin.vanish")) {
             val noPermsMessage = plugin.config.getString("vanish.no-permissions")
-            if (noPermsMessage != null && noPermsMessage.isNotEmpty()) {
+            if (!noPermsMessage.isNullOrEmpty()) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', noPermsMessage))
             } else {
                 sender.sendMessage(ChatColor.RED.toString() + "You don't have permission to use this command!")
@@ -33,25 +31,25 @@ class VanishCommand(private val plugin: LionPlugin) : CommandExecutor {
         val vanishedMessage = plugin.config.getString("vanish.vanished-message")
         val unvanishedMessage = plugin.config.getString("vanish.unvanished-message")
 
-        if (vanishedPlayers.contains(player.uniqueId)) {
-            vanishedPlayers.remove(player.uniqueId)
-            if (unvanishedMessage != null && unvanishedMessage.isNotEmpty()) {
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', unvanishedMessage))
+        if (vanishedPlayers.contains(sender.uniqueId)) {
+            vanishedPlayers.remove(sender.uniqueId)
+            if (!unvanishedMessage.isNullOrEmpty()) {
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', unvanishedMessage))
             }
-            player.removePotionEffect(PotionEffectType.NIGHT_VISION)
-            player.removePotionEffect(PotionEffectType.SATURATION)
+            sender.removePotionEffect(PotionEffectType.NIGHT_VISION)
+            sender.removePotionEffect(PotionEffectType.SATURATION)
             for (onlinePlayer in plugin.server.onlinePlayers) {
-                onlinePlayer.showPlayer(plugin, player)
+                onlinePlayer.showPlayer(plugin, sender)
             }
         } else {
-            vanishedPlayers.add(player.uniqueId)
-            if (vanishedMessage != null && vanishedMessage.isNotEmpty()) {
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', vanishedMessage))
+            vanishedPlayers.add(sender.uniqueId)
+            if (!vanishedMessage.isNullOrEmpty()) {
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', vanishedMessage))
             }
-            player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, Int.MAX_VALUE, 0, false, false))
-            player.addPotionEffect(PotionEffect(PotionEffectType.SATURATION, Int.MAX_VALUE, 0, false, false))
+            sender.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, Int.MAX_VALUE, 0, false, false))
+            sender.addPotionEffect(PotionEffect(PotionEffectType.SATURATION, Int.MAX_VALUE, 0, false, false))
             for (onlinePlayer in plugin.server.onlinePlayers) {
-                onlinePlayer.hidePlayer(plugin, player)
+                onlinePlayer.hidePlayer(plugin, sender)
             }
         }
         return true

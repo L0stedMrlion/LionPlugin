@@ -16,18 +16,16 @@ class MsgCommand(private val plugin: LionPlugin) : CommandExecutor {
             return true
         }
 
-        val player = sender
-
         if (args.size < 2) {
             val msgUsage = Objects.requireNonNull(plugin.config.getString("msg.usage"))?.let { ChatColor.translateAlternateColorCodes('&', it) }
-            player.sendMessage(msgUsage)
+            sender.sendMessage(msgUsage)
             return true
         }
 
         val recipient = Bukkit.getPlayer(args[0])
         if (recipient == null) {
             val playerNotFound = Objects.requireNonNull(plugin.config.getString("msg.player-not-found"))?.let { ChatColor.translateAlternateColorCodes('&', it) }
-            player.sendMessage(playerNotFound)
+            sender.sendMessage(playerNotFound)
             return true
         }
 
@@ -37,15 +35,15 @@ class MsgCommand(private val plugin: LionPlugin) : CommandExecutor {
         }
 
         val outgoingMessage = Objects.requireNonNull(plugin.config.getString("msg.outgoing-message-format"))
-                ?.replace("{sender}", player.name)
+                ?.replace("{sender}", sender.name)
                 ?.replace("{receiver}", recipient.name)?.let {
                     ChatColor.translateAlternateColorCodes('&', it
                             .replace("{message}", message.toString()))
                 }
-        player.sendMessage(outgoingMessage)
+        sender.sendMessage(outgoingMessage)
 
         val incomingMessage = Objects.requireNonNull(plugin.config.getString("msg.incoming-message-format"))
-                ?.replace("{sender}", player.name)
+                ?.replace("{sender}", sender.name)
                 ?.replace("{receiver}", recipient.name)?.let {
                     ChatColor.translateAlternateColorCodes('&', it
                             .replace("{message}", message.toString()))

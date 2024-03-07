@@ -17,7 +17,7 @@ class PingCommand(private val plugin: LionPlugin) : CommandExecutor {
 
         var pingMessage = plugin.config.getString("ping.ping-message")
 
-        if (pingMessage == null || pingMessage.isEmpty()) {
+        if (pingMessage.isNullOrEmpty()) {
             pingMessage = "&aYour ping is: &b" + getPing(player) + "ms"
         } else {
             pingMessage = ChatColor.translateAlternateColorCodes('&', pingMessage)

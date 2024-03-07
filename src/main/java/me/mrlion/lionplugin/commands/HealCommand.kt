@@ -12,9 +12,8 @@ import java.util.*
 class HealCommand(private val plugin: LionPlugin) : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (sender is Player) {
-            val player = sender
 
-            if (!player.hasPermission("lionplugin.heal")) {
+            if (!sender.hasPermission("lionplugin.heal")) {
                 val noPermsMessage = Objects.requireNonNull(plugin.config.getString("heal.no-permissions"))?.let { ChatColor.translateAlternateColorCodes('&', it) }
                 if (noPermsMessage != null) {
                     if (noPermsMessage.isEmpty()) {
@@ -26,17 +25,17 @@ class HealCommand(private val plugin: LionPlugin) : CommandExecutor {
                 return true
             }
 
-            if (args.size == 0) {
-                player.health = 20.0
-                player.sendMessage(Objects.requireNonNull(plugin.config.getString("heal.self-heal-message"))?.let { ChatColor.translateAlternateColorCodes('&', it) })
-                plugin.logger.info(player.name + " has been healed.")
+            if (args.isEmpty()) {
+                sender.health = 20.0
+                sender.sendMessage(Objects.requireNonNull(plugin.config.getString("heal.self-heal-message"))?.let { ChatColor.translateAlternateColorCodes('&', it) })
+                plugin.logger.info(sender.name + " has been healed.")
                 return true
             }
 
             if (args[0].equals("all", ignoreCase = true)) {
                 for (onlinePlayer in Bukkit.getOnlinePlayers()) {
                     onlinePlayer.health = 20.0
-                    onlinePlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.config.getString("heal.other-heal-message")!!.replace("{healer}", player.name)))
+                    onlinePlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.config.getString("heal.other-heal-message")!!.replace("{healer}", sender.name)))
                 }
                 plugin.logger.info("All players have been healed!")
                 return true
@@ -44,13 +43,13 @@ class HealCommand(private val plugin: LionPlugin) : CommandExecutor {
 
             val target = Bukkit.getPlayer(args[0])
             if (target == null) {
-                player.sendMessage(ChatColor.RED.toString() + plugin.config.getString("heal.player-not-found-message"))
+                sender.sendMessage(ChatColor.RED.toString() + plugin.config.getString("heal.player-not-found-message"))
                 return true
             }
 
             target.health = 20.0
-            target.sendMessage(Objects.requireNonNull(plugin.config.getString("heal.other-heal-message"))?.let { ChatColor.translateAlternateColorCodes('&', it.replace("{healer}", player.name)) })
-            plugin.logger.info(target.name + " has been healed by " + player.name)
+            target.sendMessage(Objects.requireNonNull(plugin.config.getString("heal.other-heal-message"))?.let { ChatColor.translateAlternateColorCodes('&', it.replace("{healer}", sender.name)) })
+            plugin.logger.info(target.name + " has been healed by " + sender.name)
         } else {
             if (args.isEmpty() || !args[0].equals("all", ignoreCase = true)) {
                 sender.sendMessage(ChatColor.RED.toString() + plugin.config.getString("heal.console-usage-message"))

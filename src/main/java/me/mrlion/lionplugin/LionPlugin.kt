@@ -24,8 +24,8 @@ class LionPlugin : JavaPlugin() {
 
         server.pluginManager.registerEvents(JoinQuitListener(this), this)
         server.pluginManager.registerEvents(BlockedCommandsListener(this), this)
-        server.pluginManager.registerEvents(SitListener(this), this)
-        server.pluginManager.registerEvents(InvalidCommandListener(this), this)
+        server.pluginManager.registerEvents(SitListener(), this)
+        server.pluginManager.registerEvents(InvalidCommandListener(), this)
 
         logger.info("LionPlugin has been enabled!")
         saveDefaultConfig()
