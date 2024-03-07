@@ -36,7 +36,6 @@ msg: # Can be used placeholders {sender}, {receiver} and {message}
   player-not-found: "&cPlayer not found!"
 
 fly:
-  player-only: "&cConsole cant use this command!"
   no-permissions: "&cYou don't have permission to use this command!"
 
 reload:

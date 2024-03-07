@@ -20,7 +20,7 @@ public class FlyCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("fly.player-only"))));
+            sender.sendMessage(ChatColor.RED + "This command cant be used by console!");
             return true;
         }
 
