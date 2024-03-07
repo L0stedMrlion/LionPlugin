@@ -1,35 +1,31 @@
-package me.mrlion.lionplugin.listeners;
+package me.mrlion.lionplugin.listeners
 
-import me.mrlion.lionplugin.LionPlugin;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.ChatColor;
+import me.mrlion.lionplugin.LionPlugin
+import org.bukkit.ChatColor
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.event.player.PlayerQuitEvent
+import java.util.*
 
-import java.util.Objects;
-
-public class JoinQuitListener implements Listener {
-
-    private final LionPlugin plugin;
-
-    public JoinQuitListener(LionPlugin plugin) {
-        this.plugin = plugin;
+class JoinQuitListener(private val plugin: LionPlugin) : Listener {
+    @EventHandler
+    fun onPlayerJoin(event: PlayerJoinEvent) {
+        val playerName = event.player.name
+        var joinMessage = Objects.requireNonNull(plugin.config.getString("join-message"))?.let { ChatColor.translateAlternateColorCodes('&', it) }
+        if (joinMessage != null) {
+            joinMessage = joinMessage.replace("{player}", playerName)
+        }
+        event.joinMessage = joinMessage
     }
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        String playerName = event.getPlayer().getName();
-        String joinMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("join-message")));
-        joinMessage = joinMessage.replace("{player}", playerName);
-        event.setJoinMessage(joinMessage);
-    }
-
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent event) {
-        String playerName = event.getPlayer().getName();
-        String quitMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("quit-message")));
-        quitMessage = quitMessage.replace("{player}", playerName);
-        event.setQuitMessage(quitMessage);
+    fun onPlayerQuit(event: PlayerQuitEvent) {
+        val playerName = event.player.name
+        var quitMessage = Objects.requireNonNull(plugin.config.getString("quit-message"))?.let { ChatColor.translateAlternateColorCodes('&', it) }
+        if (quitMessage != null) {
+            quitMessage = quitMessage.replace("{player}", playerName)
+        }
+        event.quitMessage = quitMessage
     }
 }

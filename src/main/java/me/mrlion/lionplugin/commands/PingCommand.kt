@@ -1,40 +1,35 @@
-package me.mrlion.lionplugin.commands;
+package me.mrlion.lionplugin.commands
 
-import me.mrlion.lionplugin.LionPlugin;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import me.mrlion.lionplugin.LionPlugin
+import org.bukkit.ChatColor
+import org.bukkit.command.Command
+import org.bukkit.command.CommandExecutor
+import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
 
-public class PingCommand implements CommandExecutor {
-    private final LionPlugin plugin;
-
-    public PingCommand(LionPlugin plugin) {
-        this.plugin = plugin;
-    }
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "This command cant be used by console!");
-            return true;
+class PingCommand(private val plugin: LionPlugin) : CommandExecutor {
+    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
+        if (sender !is Player) {
+            sender.sendMessage(ChatColor.RED.toString() + "This command cant be used by console!")
+            return true
         }
-        Player player = (Player) sender;
+        val player = sender
 
-        String pingMessage = plugin.getConfig().getString("ping.ping-message");
+        var pingMessage = plugin.config.getString("ping.ping-message")
 
         if (pingMessage == null || pingMessage.isEmpty()) {
-            pingMessage = "&aYour ping is: &b" + getPing(player) + "ms";
+            pingMessage = "&aYour ping is: &b" + getPing(player) + "ms"
         } else {
-            pingMessage = ChatColor.translateAlternateColorCodes('&', pingMessage);
-            pingMessage = pingMessage.replace("{ping}", Integer.toString(getPing(player)));
+            pingMessage = ChatColor.translateAlternateColorCodes('&', pingMessage)
+            pingMessage = pingMessage.replace("{ping}", getPing(player).toString())
         }
 
-        player.sendMessage(pingMessage);
+        player.sendMessage(pingMessage)
 
-        return true;
+        return true
     }
-    private int getPing(Player player) {
-        return player.getPing();
+
+    private fun getPing(player: Player): Int {
+        return player.ping
     }
 }

@@ -1,35 +1,26 @@
-package me.mrlion.lionplugin.listeners;
+package me.mrlion.lionplugin.listeners
 
-import me.mrlion.lionplugin.LionPlugin;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.ChatColor;
+import me.mrlion.lionplugin.LionPlugin
+import org.bukkit.ChatColor
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerCommandPreprocessEvent
+import java.util.*
 
-import java.util.List;
-import java.util.Objects;
-
-public class BlockedCommandsListener implements Listener {
-
-    private final LionPlugin plugin;
-
-    public BlockedCommandsListener(LionPlugin plugin) {
-        this.plugin = plugin;
-    }
-
+class BlockedCommandsListener(private val plugin: LionPlugin) : Listener {
     @EventHandler
-    public void onCommandPreprocess(PlayerCommandPreprocessEvent event) {
-        String message = event.getMessage().substring(1);
-        String[] parts = message.split(" ");
-        String commandName = parts[0].toLowerCase();
+    fun onCommandPreprocess(event: PlayerCommandPreprocessEvent) {
+        val message = event.message.substring(1)
+        val parts = message.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+        val commandName = parts[0].lowercase(Locale.getDefault())
 
-        List<String> blockedCommands = plugin.getConfig().getStringList("blocked-commands");
+        val blockedCommands = plugin.config.getStringList("blocked-commands")
 
         if (blockedCommands.contains(commandName)) {
-            if (!event.getPlayer().hasPermission("lionplugin.blockedcommands." + commandName)) {
-                event.setCancelled(true);
-                String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("blocked-commands-no-perms")));
-                event.getPlayer().sendMessage(noPermsMessage);
+            if (!event.player.hasPermission("lionplugin.blockedcommands")) {
+                event.isCancelled = true
+                val noPermsMessage = Objects.requireNonNull(plugin.config.getString("blocked-commands-no-perms"))?.let { ChatColor.translateAlternateColorCodes('&', it) }
+                event.player.sendMessage(noPermsMessage)
             }
         }
     }

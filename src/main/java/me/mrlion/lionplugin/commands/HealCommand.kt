@@ -1,80 +1,72 @@
-package me.mrlion.lionplugin.commands;
+package me.mrlion.lionplugin.commands
 
-import me.mrlion.lionplugin.LionPlugin;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import me.mrlion.lionplugin.LionPlugin
+import org.bukkit.Bukkit
+import org.bukkit.ChatColor
+import org.bukkit.command.Command
+import org.bukkit.command.CommandExecutor
+import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
+import java.util.*
 
-import java.util.Objects;
-
-public class HealCommand implements CommandExecutor {
-
-    private final LionPlugin plugin;
-
-    public HealCommand(LionPlugin plugin) {
-        this.plugin = plugin;
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+class HealCommand(private val plugin: LionPlugin) : CommandExecutor {
+    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
+        if (sender is Player) {
+            val player = sender
 
             if (!player.hasPermission("lionplugin.heal")) {
-                String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("heal.no-permissions")));
-                if (noPermsMessage.isEmpty()) {
-                    sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
-                } else {
-                    sender.sendMessage(noPermsMessage);
+                val noPermsMessage = Objects.requireNonNull(plugin.config.getString("heal.no-permissions"))?.let { ChatColor.translateAlternateColorCodes('&', it) }
+                if (noPermsMessage != null) {
+                    if (noPermsMessage.isEmpty()) {
+                        sender.sendMessage(ChatColor.RED.toString() + "You don't have permission to use this command.")
+                    } else {
+                        sender.sendMessage(noPermsMessage)
+                    }
                 }
-                return true;
+                return true
             }
 
-            if (args.length == 0) {
-                player.setHealth(20);
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("heal.self-heal-message"))));
-                plugin.getLogger().info(player.getName() + " has been healed.");
-                return true;
+            if (args.size == 0) {
+                player.health = 20.0
+                player.sendMessage(Objects.requireNonNull(plugin.config.getString("heal.self-heal-message"))?.let { ChatColor.translateAlternateColorCodes('&', it) })
+                plugin.logger.info(player.name + " has been healed.")
+                return true
             }
 
-            if (args[0].equalsIgnoreCase("all")) {
-                for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                    onlinePlayer.setHealth(20);
-                    onlinePlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal.other-heal-message").replace("{healer}", player.getName())));
+            if (args[0].equals("all", ignoreCase = true)) {
+                for (onlinePlayer in Bukkit.getOnlinePlayers()) {
+                    onlinePlayer.health = 20.0
+                    onlinePlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.config.getString("heal.other-heal-message")!!.replace("{healer}", player.name)))
                 }
-                plugin.getLogger().info("All players have been healed!");
-                return true;
+                plugin.logger.info("All players have been healed!")
+                return true
             }
 
-            Player target = Bukkit.getPlayer(args[0]);
+            val target = Bukkit.getPlayer(args[0])
             if (target == null) {
-                player.sendMessage(ChatColor.RED + plugin.getConfig().getString("heal.player-not-found-message"));
-                return true;
+                player.sendMessage(ChatColor.RED.toString() + plugin.config.getString("heal.player-not-found-message"))
+                return true
             }
 
-            target.setHealth(20);
-            target.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("heal.other-heal-message")).replace("{healer}", player.getName())));
-            plugin.getLogger().info(target.getName() + " has been healed by " + player.getName());
+            target.health = 20.0
+            target.sendMessage(Objects.requireNonNull(plugin.config.getString("heal.other-heal-message"))?.let { ChatColor.translateAlternateColorCodes('&', it.replace("{healer}", player.name)) })
+            plugin.logger.info(target.name + " has been healed by " + player.name)
         } else {
-
-            if (args.length == 0 || !args[0].equalsIgnoreCase("all")) {
-                sender.sendMessage(ChatColor.RED + plugin.getConfig().getString("heal.console-usage-message"));
-                return true;
+            if (args.isEmpty() || !args[0].equals("all", ignoreCase = true)) {
+                sender.sendMessage(ChatColor.RED.toString() + plugin.config.getString("heal.console-usage-message"))
+                return true
             }
 
-            if (args[0].equalsIgnoreCase("all")) {
-                for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                    onlinePlayer.setHealth(20);
-                    onlinePlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("heal.other-heal-message")).replace("{healer}", "Console")));
+            if (args[0].equals("all", ignoreCase = true)) {
+                for (onlinePlayer in Bukkit.getOnlinePlayers()) {
+                    onlinePlayer.health = 20.0
+                    onlinePlayer.sendMessage(Objects.requireNonNull(plugin.config.getString("heal.other-heal-message"))?.let { ChatColor.translateAlternateColorCodes('&', it.replace("{healer}", "Console")) })
                 }
-                plugin.getLogger().info("All players have been healed!");
-                return true;
+                plugin.logger.info("All players have been healed!")
+                return true
             }
         }
 
-        return true;
+        return true
     }
 }
