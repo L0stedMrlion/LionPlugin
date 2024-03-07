@@ -1,5 +1,6 @@
 package me.mrlion.lionplugin;
 
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashSet;
 import java.util.Objects;
@@ -27,7 +28,7 @@ public class LionPlugin extends JavaPlugin {
 
         getLogger().info("LionPlugin has been enabled!");
         saveDefaultConfig();
-        reloadConfig();
+        reloadConfig();  
     }
 
     @Override

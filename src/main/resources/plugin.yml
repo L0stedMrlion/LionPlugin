@@ -19,9 +19,6 @@ commands:
   lreload:
     description: Reloads config
     usage: /lreload
-  lwhitelist:
-    description: Add player to our whitelist system
-    usage: /lwhitelist <player>
   ping:
     description: Get your ping
     usage: /ping
