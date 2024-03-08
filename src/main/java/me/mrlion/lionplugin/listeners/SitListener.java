@@ -10,12 +10,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import java.util.Objects;
+
 public class SitListener implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Action action = event.getAction();
-        Location clickedBlockLocation = event.getClickedBlock().getLocation();
+        Location clickedBlockLocation = Objects.requireNonNull(event.getClickedBlock()).getLocation();
 
         if (action == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock() != null) {
             Material blockType = event.getClickedBlock().getType();

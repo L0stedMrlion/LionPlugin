@@ -1,6 +1,5 @@
 package me.mrlion.lionplugin;
 
-import com.google.gson.JsonArray;
 import me.mrlion.lionplugin.commands.*;
 import me.mrlion.lionplugin.listeners.BlockedCommandsListener;
 import me.mrlion.lionplugin.listeners.InvalidCommandListener;

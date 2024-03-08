@@ -26,7 +26,7 @@ public class BlockedCommandsListener implements Listener {
         if (plugin.getConfig().contains("blocked-commands")) {
             List<String> blockedCommands = plugin.getConfig().getStringList("blocked-commands");
 
-            if (((List<?>) blockedCommands).contains(commandName)) {
+            if (blockedCommands.contains(commandName)) {
                 if (!event.getPlayer().hasPermission("lionplugin.blockedcommands")) {
                     event.setCancelled(true);
                     String noPermsMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("blocked-commands-no-perms")));
