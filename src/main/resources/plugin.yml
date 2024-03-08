@@ -1,7 +1,7 @@
 name: LionPlugin
 author: Mrlion
 description: "An utility plugin, made by Mrlion for his server :)"
-version: "BUILD-1365"
+version: "BUILD-1426"
 main: me.mrlion.lionplugin.LionPlugin
 api-version: '1.20'
 load: POSTWORLD

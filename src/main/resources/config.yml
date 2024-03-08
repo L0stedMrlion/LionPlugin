@@ -23,23 +23,23 @@ blocked-commands:
   - tell
   - minecraft:tell
   - reload
-blocked-commands-no-perms: "&cYou don't have permission to execute this command!"
+blocked-commands-no-perms: "&csʏsᴛᴇᴍ &8» &cYou don't have permission to execute this command!"
 
 # ------- OTHER MESSAGES ---------
 other:
-  no-perms: "&cYou don't have permission to use this command!"
+  no-perms: "&csʏsᴛᴇᴍ &8» &cYou don't have permission to use this command!"
 
 msg: # Can be used placeholders {sender}, {receiver} and {message}
-  outgoing-message-format: "&6{sender} &8-> &6{receiver}&7: &7{message}"
-  incoming-message-format: "&6{sender} &8-> &6You&7: &7{message}"
-  usage: "&cUsage: /msg <player> <message>"
-  player-not-found: "&cPlayer not found!"
+  outgoing-message-format: "&6sʏsᴛᴇᴍ &8» &6{sender} &8-> &6{receiver}&7: &7{message}"
+  incoming-message-format: "&6sʏsᴛᴇᴍ &8» &6{sender} &8-> &6You&7: &7{message}"
+  usage: "&6sʏsᴛᴇᴍ &8» &cUsage: /msg <player> <message>"
+  player-not-found: "&csʏsᴛᴇᴍ &8» &cPlayer not found!"
 
 fly:
-  no-permissions: "&cYou don't have permission to use this command!"
+  no-permissions: "&csʏsᴛᴇᴍ &8» &cYou don't have permission to use this command!"
 
 reload:
-  config-reloaded: "&aConfig successfully reloaded!"
+  config-reloaded: "&6sʏsᴛᴇᴍ &8»&aConfig successfully reloaded!"
 
 heal:
   no-permissions: "&cYou don't have permission to use this command!"
@@ -50,12 +50,9 @@ heal:
   console-usage-message: "&cUsage: /heal <player/all>"
 
 whitelist:
-  cmd-usage: "&cUsage /lwhitelist <player>"
-  player-added: "&a{player} has been added to the whitelist."
-  player-removed: "&c{player} has been removed from the whitelist."
   whitelist:
     - Noone
-  kick-message: "You are not whitelisted on this server."
+  kick-message: "You are not whitelisted on this server"
 
 ping:
   ping-message: "&7Your ping is &6{ping}ms"

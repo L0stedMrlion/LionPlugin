@@ -1,5 +1,6 @@
 package me.mrlion.lionplugin.listeners;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,8 +28,10 @@ public class WhitelistListener implements Listener {
             return;
         }
         if (!config.getStringList("whitelist.whitelist").contains(playerName)) {
+            String kickMessage = Objects.requireNonNull(config.getString("whitelist.kick-message"));
+            kickMessage = ChatColor.translateAlternateColorCodes('&', kickMessage);
             plugin.getLogger().log(Level.WARNING, "Player " + playerName + " tried to join but is not whitelisted!");
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, Objects.requireNonNull(config.getString("whitelist.kick-message")));
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, kickMessage);
         }
     }
 }
