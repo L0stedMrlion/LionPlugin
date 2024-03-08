@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LionPlugin.iml" filepath="$PROJECT_DIR$/LionPlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LionPlugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/LionPlugin.main.iml" />
     </modules>
   </component>
 </project>
