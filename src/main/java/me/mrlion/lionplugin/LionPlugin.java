@@ -30,5 +30,4 @@ public class LionPlugin extends JavaPlugin {
     public void onDisable() {
         getLogger().info("LionPlugin has been disabled!");
     }
-
 }

@@ -8,15 +8,12 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
-import java.util.logging.Level;
 
 public class WhitelistListener implements Listener {
 
     private final FileConfiguration config;
-    private final JavaPlugin plugin;
 
     public WhitelistListener(JavaPlugin plugin) {
-        this.plugin = plugin;
         this.config = plugin.getConfig();
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
@@ -27,10 +24,9 @@ public class WhitelistListener implements Listener {
         if (event.getPlayer().isOp()) {
             return;
         }
-        if (!config.getStringList("whitelist.whitelist").contains(playerName)) {
+        if (!config.getStringList("whitelist.whitelisted-players").contains(playerName)) {
             String kickMessage = Objects.requireNonNull(config.getString("whitelist.kick-message"));
             kickMessage = ChatColor.translateAlternateColorCodes('&', kickMessage);
-            plugin.getLogger().log(Level.WARNING, "Player " + playerName + " tried to join but is not whitelisted!");
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, kickMessage);
         }
     }

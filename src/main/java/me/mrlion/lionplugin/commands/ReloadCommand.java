@@ -5,9 +5,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 public class ReloadCommand implements CommandExecutor {
     private final LionPlugin plugin;
@@ -17,21 +14,20 @@ public class ReloadCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("lionplugin.reload")) {
-            String noPermsMessage = Objects.requireNonNull(plugin.getConfig().getString("other.no-perms"));
-            if (noPermsMessage.isEmpty()) {
-                sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
-            } else {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', noPermsMessage));
-            }
+            sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
             return true;
         }
 
-        plugin.reloadConfig();
-        String configReloadedMessage = Objects.requireNonNull(plugin.getConfig().getString("reload.config-reloaded"));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', configReloadedMessage));
-        plugin.getLogger().info("Config was successfully reloaded");
+        try {
+            plugin.reloadConfig();
+            sender.sendMessage(ChatColor.GREEN + "Configuration reloaded successfully.");
+            plugin.getLogger().info("Configuration reloaded by " + sender.getName());
+        } catch (Exception e) {
+            sender.sendMessage(ChatColor.RED + "An error occurred while reloading the configuration. Please check the server logs for details.");
+            e.printStackTrace();
+        }
         return true;
     }
 }

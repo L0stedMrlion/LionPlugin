@@ -1,8 +1,8 @@
 # ------- JOIN & QUIT MESSAGES ---------
 
 # Can be used placeholders {player}
-join-message: "&6{player} &7has joined the server!"
-quit-message: "&6{player} &7has left the server :("
+join-message: "&6sʏsᴛᴇᴍ &8» &6{player} &7has joined the server!"
+quit-message: "&6sʏsᴛᴇᴍ &8» &6{player} &7has left the server :("
 
 #--------- BLOCKED COMMANDS --------
 blocked-commands:
@@ -18,10 +18,6 @@ blocked-commands:
   - bukkit:about
   - bukkit:ver
   - bukkit:version
-  - callback
-  - paper:callback
-  - tell
-  - minecraft:tell
   - reload
 blocked-commands-no-perms: "&csʏsᴛᴇᴍ &8» &cYou don't have permission to execute this command!"
 
@@ -50,8 +46,8 @@ heal:
   console-usage-message: "&cUsage: /heal <player/all>"
 
 whitelist:
-  whitelist:
-    - Noone
+  whitelisted-players:
+    - L0stedMrlion
   kick-message: "You are not whitelisted on this server"
 
 ping:
