@@ -10,11 +10,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.*;
 
 public class LionPlugin extends JavaPlugin {
-    private Set<UUID> vanishedPlayers;
 
     @Override
     public void onEnable() {
-        vanishedPlayers = new HashSet<>();
 
         Objects.requireNonNull(getCommand("fly")).setExecutor(new FlyCommand(this));
         Objects.requireNonNull(getCommand("heal")).setExecutor(new HealCommand(this));
