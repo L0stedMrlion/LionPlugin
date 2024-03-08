@@ -17,16 +17,19 @@ public class SitListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Action action = event.getAction();
-        Location clickedBlockLocation = Objects.requireNonNull(event.getClickedBlock()).getLocation();
+        if (event.getClickedBlock() != null) {
+            Location clickedBlockLocation = event.getClickedBlock().getLocation();
 
-        if (action == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock() != null) {
-            Material blockType = event.getClickedBlock().getType();
+            if (action == Action.RIGHT_CLICK_BLOCK) {
+                Material blockType = event.getClickedBlock().getType();
 
-            if (isStairs(blockType)) {
-                sitPlayer(player, clickedBlockLocation);
+                if (isStairs(blockType)) {
+                    sitPlayer(player, clickedBlockLocation);
+                }
             }
         }
     }
+
 
     private void sitPlayer(Player player, Location blockLocation) {
         Location sittingLocation = blockLocation.clone().add(0.5, 0.5, 0.5);

@@ -53,6 +53,9 @@ whitelist:
   cmd-usage: "&cUsage /lwhitelist <player>"
   player-added: "&a{player} has been added to the whitelist."
   player-removed: "&c{player} has been removed from the whitelist."
+  whitelist:
+    - Noone
+  kick-message: "You are not whitelisted on this server."
 
 ping:
   ping-message: "&7Your ping is &6{ping}ms"
@@ -64,3 +67,4 @@ vanish:
 
 invalidmessage:
   custom-command-not-found-message: "&cThis command doesn't exist! Did you type it right?"
+
