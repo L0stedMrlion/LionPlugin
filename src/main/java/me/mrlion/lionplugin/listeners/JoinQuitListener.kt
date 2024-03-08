@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerQuitEvent
 import java.util.*
 
-class JoinQuitListener(private val plugin: LionPlugin) : Listener {
+class JoinQuitListener(private val plugin: me.mrlion.lionplugin.LionPlugin) : Listener {
     @EventHandler
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val playerName = event.player.name

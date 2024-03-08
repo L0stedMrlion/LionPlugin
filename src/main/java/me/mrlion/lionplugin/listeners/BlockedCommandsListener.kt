@@ -7,7 +7,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerCommandPreprocessEvent
 import java.util.*
 
-class BlockedCommandsListener(private val plugin: LionPlugin) : Listener {
+class BlockedCommandsListener(private val plugin: me.mrlion.lionplugin.LionPlugin) : Listener {
     @EventHandler
     fun onCommandPreprocess(event: PlayerCommandPreprocessEvent) {
         val message = event.message.substring(1)

@@ -1,5 +1,6 @@
 package me.mrlion.lionplugin.listeners
 
+import me.mrlion.lionplugin.LionPlugin
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.entity.ArmorStand
@@ -10,7 +11,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 
-class SitListener : Listener {
+class SitListener(plugin: LionPlugin?) : Listener {
     @EventHandler
     fun onPlayerInteract(event: PlayerInteractEvent) {
         val player = event.player
