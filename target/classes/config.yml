@@ -1,0 +1,66 @@
+# ------- JOIN & QUIT MESSAGES ---------
+
+# Can be used placeholders {player}
+join-message: "&6{player} &7has joined the server!"
+quit-message: "&6{player} &7has left the server :("
+
+#--------- BLOCKED COMMANDS --------
+blocked-commands:
+  - pl
+  - plugins
+  - version
+  - bukkit:plugins
+  - bukkit:pl
+  - bukkit:?
+  - help
+  - bukkit:help
+  - about
+  - bukkit:about
+  - bukkit:ver
+  - bukkit:version
+  - callback
+  - paper:callback
+  - tell
+  - minecraft:tell
+  - reload
+blocked-commands-no-perms: "&cYou don't have permission to execute this command!"
+
+# ------- OTHER MESSAGES ---------
+other:
+  no-perms: "&cYou don't have permission to use this command!"
+
+msg: # Can be used placeholders {sender}, {receiver} and {message}
+  outgoing-message-format: "&6{sender} &8-> &6{receiver}&7: &7{message}"
+  incoming-message-format: "&6{sender} &8-> &6You&7: &7{message}"
+  usage: "&cUsage: /msg <player> <message>"
+  player-not-found: "&cPlayer not found!"
+
+fly:
+  no-permissions: "&cYou don't have permission to use this command!"
+
+reload:
+  config-reloaded: "&aConfig successfully reloaded!"
+
+heal:
+  no-permissions: "&cYou don't have permission to use this command!"
+  self-heal-message: "&aYou have been healed!"
+  other-heal-message: "&aYou have been healed by {healer}!"
+  all-heal-message: "&aAll players have been healed!"
+  player-not-found-message: "&cPlayer not found!"
+  console-usage-message: "&cUsage: /heal <player/all>"
+
+whitelist:
+  cmd-usage: "&cUsage /lwhitelist <player>"
+  player-added: "&a{player} has been added to the whitelist."
+  player-removed: "&c{player} has been removed from the whitelist."
+
+ping:
+  ping-message: "&7Your ping is &6{ping}ms"
+
+vanish:
+  vanished-message: "&aYou have vanished."
+  unvanished-message: "&cYou are now visible."
+  no-permissions: "&cYou don't have permission to use this command!"
+
+invalidmessage:
+  custom-command-not-found-message: "&cThis command doesn't exist! Did you type it right?"
