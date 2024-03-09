@@ -4,7 +4,7 @@ description: "An utility plugin, made by Mrlion for his server :)"
 version: "BUILD-1426"
 main: me.mrlion.lionplugin.LionPlugin
 api-version: '1.20'
-load: POSTWORLD
+load: STARTUP
 resources:
   - config.yml
 commands:
@@ -23,3 +23,15 @@ commands:
   ping:
     description: Get your ping
     usage: /ping
+permissions:
+  lionplugin.*:
+    children:
+      - lionplugin.fly
+      - lionplugin.heal
+      - lionplugin.reload
+  lionplugin.fly:
+    description: Gives permission to use /fly
+  lionplugin.heal:
+    description: Gives permissions to heal yourself/all/player
+  lionplugin.reload:
+    description: Gives permission to reload the config.yml
