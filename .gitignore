@@ -15,4 +15,4 @@ replay_pid*
 build/*
 gradle/*
 .idea/*
-target/
+target/*
