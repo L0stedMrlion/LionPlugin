@@ -1,8 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="LionPlugin:jar">
+  <artifact type="jar" name="LionPlugin:jar">
     <output-path>$USER_HOME$/AppData/Roaming/.feather/player-server/servers/61868a4c-f190-420d-8234-038e035d27a0/plugins</output-path>
-    <root id="archive" name="LionPlugin.jar">
-      <element id="module-output" name="LionPlugin" />
-    </root>
+    <root id="archive" name="LionPlugin.jar" />
   </artifact>
 </component>
