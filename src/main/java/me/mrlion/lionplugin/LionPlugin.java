@@ -28,6 +28,7 @@ public class LionPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
+
         getLogger().info("LionPlugin has been disabled!");
     }
 }
