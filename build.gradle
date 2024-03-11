@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'me.mrlion'
-version = '1.0'
+version = 'BUILD-1623'
 
 repositories {
     mavenCentral()
