@@ -11,13 +11,13 @@ commands:
     description: Toggle flight mode
     usage: /fly
   heal:
-    description: Heals you or everyone
+    description: Heals specific player or everyone
     usage: /heal <player/all>
   msg:
     description: Send a private message a specific player
     usage: /msg <player> <message>
   lreload:
-    description: Reloads config
+    description: Reloads plugin's config
     usage: /lreload
   ping:
     description: Get your ping

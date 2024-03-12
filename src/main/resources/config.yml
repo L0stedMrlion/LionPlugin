@@ -1,3 +1,10 @@
+# ------------------- WHITELIST -----------------------
+whitelist:
+  whitelisted-players:
+    - Player1
+    - Player2
+  kick-message: "&cYou are not whitelisted on our server! If you think this is a mistake contact Mrlion!"
+
 # ------- JOIN & QUIT MESSAGES ---------
 
 # Can be used placeholders {player}
@@ -22,7 +29,7 @@ blocked-commands-no-perms: "&csʏsᴛᴇᴍ &8» &cYou don't have permission to 
 
 # ------- OTHER MESSAGES ---------
 
-msg: # Can be used placeholders {sender}, {receiver} and {message}
+msg:
   outgoing-message-format: "&6sʏsᴛᴇᴍ &8» &6{sender} &8-> &6{receiver}&7: &7{message}"
   incoming-message-format: "&6sʏsᴛᴇᴍ &8» &6{sender} &8-> &6You&7: &7{message}"
   usage: "&6sʏsᴛᴇᴍ &8» &cUsage: /msg <player> <message>"
@@ -33,6 +40,7 @@ fly:
 
 reload:
   config-reloaded: "&6sʏsᴛᴇᴍ &8»&aConfig successfully reloaded!"
+  no-perms: "&cYou don't have permission to use this command."
 
 heal:
   no-permissions: "&csʏsᴛᴇᴍ &8» &cYou don't have permission to use this command!"
@@ -42,14 +50,9 @@ heal:
   player-not-found-message: "&csʏsᴛᴇᴍ &8» &cPlayer not found!"
   console-usage-message: "&csʏsᴛᴇᴍ &8» &cUsage: /heal <player/all>"
 
-whitelist:
-  whitelisted-players:
-    - L0stedMrlion
-  kick-message: "&cYou are not whitelisted on our server! If you think this is a mistake contact Mrlion!"
-
 ping:
   ping-message: "&6sʏsᴛᴇᴍ &8» &7Your ping is &6{ping}ms"
 
 invalidmessage:
-  custom-command-not-found-message: "&cThis command doesn't exist! Did you type it right?"
+  custom-command-not-found-message: "&cThis command doesn't exist or you don't just have permission for it!"
 
