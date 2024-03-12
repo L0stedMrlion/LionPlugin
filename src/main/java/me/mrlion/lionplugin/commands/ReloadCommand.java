@@ -16,13 +16,19 @@ public class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("lionplugin.reload")) {
-            sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+            String reloadNoPerms = plugin.getConfig().getString("reload.no-perms");
+            assert reloadNoPerms != null;
+            reloadNoPerms = ChatColor.translateAlternateColorCodes('&', reloadNoPerms);
+            sender.sendMessage(reloadNoPerms);
             return true;
         }
 
         try {
             plugin.reloadConfig();
-            sender.sendMessage(ChatColor.GREEN + "Configuration reloaded successfully.");
+            String configReloaded = plugin.getConfig().getString("reload.config-reloaded");
+            assert configReloaded != null;
+            configReloaded = ChatColor.translateAlternateColorCodes('&', configReloaded);
+            sender.sendMessage(configReloaded);
             plugin.getLogger().info("Configuration reloaded by " + sender.getName());
         } catch (Exception e) {
             sender.sendMessage(ChatColor.RED + "An error occurred while reloading the configuration. Please check the server logs for details.");
