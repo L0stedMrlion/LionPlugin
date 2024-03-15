@@ -12,8 +12,7 @@ public class ListenerRegister {
     public static void registerListeners(LionPlugin plugin) {
         PluginManager pluginManager = plugin.getServer().getPluginManager();
 
-        pluginManager.registerEvents(new BlockedCommandsListener(), plugin);
-        pluginManager.registerEvents(new JoinQuitListener(), plugin);
+        pluginManager.registerEvents(new JoinQuitListener(plugin), plugin);
         pluginManager.registerEvents(new SitListener(), plugin);
         pluginManager.registerEvents(new InvalidCommandListener(), plugin);
     }

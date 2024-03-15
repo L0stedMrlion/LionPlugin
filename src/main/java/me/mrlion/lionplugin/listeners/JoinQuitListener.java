@@ -7,11 +7,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-
 public class JoinQuitListener implements Listener {
-    private LionPlugin plugin;
+    private final LionPlugin plugin;
 
-    public JoinQuitListener() {
+    public JoinQuitListener(LionPlugin plugin) {
+        this.plugin = plugin;
     }
 
     @EventHandler
@@ -20,8 +20,8 @@ public class JoinQuitListener implements Listener {
         String joinMessage = plugin.getConfig().getString("join-message");
         if (joinMessage != null) {
             joinMessage = ChatColor.translateAlternateColorCodes('&', joinMessage.replace("{player}", playerName));
+            event.setJoinMessage(joinMessage);
         }
-        event.setJoinMessage(joinMessage);
     }
 
     @EventHandler
@@ -30,7 +30,7 @@ public class JoinQuitListener implements Listener {
         String quitMessage = plugin.getConfig().getString("quit-message");
         if (quitMessage != null) {
             quitMessage = ChatColor.translateAlternateColorCodes('&', quitMessage.replace("{player}", playerName));
+            event.setQuitMessage(quitMessage);
         }
-        event.setQuitMessage(quitMessage);
     }
 }
