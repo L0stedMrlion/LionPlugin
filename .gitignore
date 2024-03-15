@@ -18,3 +18,4 @@ gradle/
 out/
 target/
 settings.gradle
+target
