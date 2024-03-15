@@ -7,6 +7,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+import java.util.logging.Level;
+
 public class ReloadCommand implements CommandExecutor {
     private final LionPlugin plugin;
 
@@ -17,16 +20,22 @@ public class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (!sender.hasPermission("lionplugin.reload")) {
-            sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+            String reloadNoPerms = Objects.requireNonNull(plugin.getConfig().getString("reload.no-permissions"));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', reloadNoPerms));
+            sender.sendMessage(reloadNoPerms);
             return true;
         }
 
         try {
+            String reloadMessage = Objects.requireNonNull(plugin.getConfig().getString("reload.config-reloaded"));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', reloadMessage));
             plugin.reloadConfig();
-            sender.sendMessage(ChatColor.GREEN + "Config reloaded successfully.");
+            sender.sendMessage(reloadMessage);
         } catch (Exception e) {
-            sender.sendMessage(ChatColor.RED + "An error occurred while reloading the config.");
-            e.printStackTrace();
+            String reloadError = Objects.requireNonNull(plugin.getConfig().getString("reload.error"));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', reloadError));
+            sender.sendMessage(reloadError);
+            plugin.getLogger().log(Level.SEVERE, "Error occurred while reloading the config:", e);
         }
         return true;
     }
