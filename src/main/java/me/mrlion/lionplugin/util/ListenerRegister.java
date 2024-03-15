@@ -1,8 +1,6 @@
 package me.mrlion.lionplugin.util;
 
 import me.mrlion.lionplugin.LionPlugin;
-import me.mrlion.lionplugin.listeners.BlockedCommandsListener;
-import me.mrlion.lionplugin.listeners.InvalidCommandListener;
 import me.mrlion.lionplugin.listeners.JoinQuitListener;
 import me.mrlion.lionplugin.listeners.SitListener;
 import org.bukkit.plugin.PluginManager;
@@ -14,6 +12,5 @@ public class ListenerRegister {
 
         pluginManager.registerEvents(new JoinQuitListener(plugin), plugin);
         pluginManager.registerEvents(new SitListener(), plugin);
-        pluginManager.registerEvents(new InvalidCommandListener(), plugin);
     }
 }
