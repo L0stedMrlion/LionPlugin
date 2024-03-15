@@ -13,7 +13,7 @@ import java.util.Objects;
 public class BlockedCommandsListener implements Listener {
     private final LionPlugin plugin;
 
-    public BlockedCommandsListener(LionPlugin plugin) {
+    public BlockedCommandsListener() {
         this.plugin = plugin;
     }
 

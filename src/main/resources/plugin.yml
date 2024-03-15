@@ -16,11 +16,11 @@ commands:
   msg:
     description: Send a private message a specific player
     usage: /msg <player> <message>
-  lreload:
+  lionreload:
     description: Reloads config
-    usage: /lreload
+    usage: /lionreload
     aliases:
-      - lionreload
+      - lreload
   ping:
     description: Get your ping
     usage: /ping

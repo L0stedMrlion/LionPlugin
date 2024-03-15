@@ -23,10 +23,9 @@ public class ReloadCommand implements CommandExecutor {
 
         try {
             plugin.reloadConfig();
-            plugin.getLogger().info("Configuration reloaded by " + sender.getName());
-            sender.sendMessage(ChatColor.GREEN + "Configuration reloaded successfully.");
+            sender.sendMessage(ChatColor.GREEN + "Config reloaded successfully.");
         } catch (Exception e) {
-            sender.sendMessage(ChatColor.RED + "An error occurred while reloading the configuration. Please check the server logs for details.");
+            sender.sendMessage(ChatColor.RED + "An error occurred while reloading the config.");
             e.printStackTrace();
         }
         return true;
