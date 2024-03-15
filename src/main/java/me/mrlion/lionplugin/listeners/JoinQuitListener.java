@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 
 public class JoinQuitListener implements Listener {
-    private LionPlugin plugin = null;
+    private LionPlugin plugin;
 
     public JoinQuitListener() {
     }
