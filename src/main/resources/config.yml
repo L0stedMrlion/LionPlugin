@@ -39,9 +39,9 @@ fly:
   no-permissions: "&csʏsᴛᴇᴍ &8» &cYou don't have permission to use this command!"
 
 reload:
-  config-reloaded: "&6sʏsᴛᴇᴍ &8»&aConfig successfully reloaded!"
-  no-permissions: "&cYou don't have permission to use this command."
-  error: "&cAn error occurred while reloading the config. See the console for more"
+  config-reloaded: "&#D51B21sʏsᴛᴇᴍ &8»&aConfig successfully reloaded!"
+  no-permissions: "&#D51B21You don't have permission to use this command."
+  error: "&#D51B21An error occurred while reloading the config. See the console for more"
 
 heal:
   no-permissions: "&csʏsᴛᴇᴍ &8» &cYou don't have permission to use this command!"

@@ -10,29 +10,20 @@ commands:
   fly:
     description: Toggle flight mode
     usage: /fly
+    permission: lionplugin.fly
   heal:
     description: Heals specific player or everyone
     usage: /heal <player/all>
+    permission: lionplugin.heal
   msg:
     description: Send a private message a specific player
     usage: /msg <player> <message>
   lionreload:
     description: Reloads config
     usage: /lionreload
+    permission: lionplugin.reload
     aliases:
       - lreload
   ping:
     description: Get your ping
     usage: /ping
-permissions:
-  lionplugin.*:
-    children:
-      - lionplugin.fly
-      - lionplugin.heal
-      - lionplugin.reload
-  lionplugin.fly:
-    description: Gives permission to use /fly
-  lionplugin.heal:
-    description: Gives permissions to heal yourself/all/player
-  lionplugin.reload:
-    description: Gives permission to reload the config.yml
