@@ -1,18 +1,16 @@
 package me.mrlion.lionplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
-
-import static me.mrlion.lionplugin.util.CommandRegister.registerCommands;
-import static me.mrlion.lionplugin.util.ListenerRegister.registerListeners;
+import me.mrlion.lionplugin.util.CommandRegister;
+import me.mrlion.lionplugin.util.ListenerRegister;
 
 public class LionPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
         try {
-            registerCommands();
-            registerListeners();
-            getConfig();
+            CommandRegister.registerCommands(this);
+            ListenerRegister.registerListeners(this);
             saveDefaultConfig();
             getLogger().info("LionPlugin has been enabled!");
         } catch (Exception e) {

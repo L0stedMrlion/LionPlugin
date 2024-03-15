@@ -11,10 +11,9 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class BlockedCommandsListener implements Listener {
-    private final LionPlugin plugin;
+    private LionPlugin plugin = null;
 
     public BlockedCommandsListener() {
-        this.plugin = plugin;
     }
 
     @EventHandler

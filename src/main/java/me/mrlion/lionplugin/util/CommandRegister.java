@@ -11,11 +11,11 @@ import java.util.Objects;
 
 public class CommandRegister {
 
-    public static void registerCommands() {
-        Objects.requireNonNull(plugin.getCommand("fly")).setExecutor(new FlyCommand((LionPlugin) plugin));
-        Objects.requireNonNull(plugin.getCommand("heal")).setExecutor(new HealCommand((LionPlugin) plugin));
-        Objects.requireNonNull(plugin.getCommand("msg")).setExecutor(new MsgCommand((LionPlugin) plugin));
-        Objects.requireNonNull(plugin.getCommand("lreload")).setExecutor(new ReloadCommand((LionPlugin) plugin));
-        Objects.requireNonNull(plugin.getCommand("ping")).setExecutor(new PingCommand((LionPlugin) plugin));
+    public static void registerCommands(LionPlugin plugin) {
+        Objects.requireNonNull(plugin.getCommand("fly")).setExecutor(new FlyCommand(plugin));
+        Objects.requireNonNull(plugin.getCommand("heal")).setExecutor(new HealCommand(plugin));
+        Objects.requireNonNull(plugin.getCommand("msg")).setExecutor(new MsgCommand(plugin));
+        Objects.requireNonNull(plugin.getCommand("lreload")).setExecutor(new ReloadCommand(plugin));
+        Objects.requireNonNull(plugin.getCommand("ping")).setExecutor(new PingCommand(plugin));
     }
 }
