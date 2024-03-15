@@ -17,8 +17,10 @@ commands:
     description: Send a private message a specific player
     usage: /msg <player> <message>
   lreload:
-    description: Reloads plugin's config
+    description: Reloads config
     usage: /lreload
+    aliases:
+      - lionreload
   ping:
     description: Get your ping
     usage: /ping
