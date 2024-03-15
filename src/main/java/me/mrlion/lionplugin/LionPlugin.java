@@ -19,7 +19,6 @@ public class LionPlugin extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
         }
     }
-
     @Override
     public void onDisable() {
         getLogger().info("LionPlugin has been disabled!");
